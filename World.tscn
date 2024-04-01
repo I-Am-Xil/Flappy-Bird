@@ -7,11 +7,12 @@
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_whpyg")]
-position = Vector2(-27, 305)
+position = Vector2(75, 347)
 
 [node name="Tubos" parent="." instance=ExtResource("2_8pkoa")]
 
 [node name="HUD" type="CanvasLayer" parent="."]
+process_mode = 3
 script = ExtResource("3_clijs")
 
 [node name="Score Label" type="Label" parent="HUD"]
@@ -61,5 +62,8 @@ text = "Restart"
 layout_mode = 2
 text = "Exit"
 
+[connection signal="game_over" from="Player" to="HUD" method="_on_player_game_over"]
 [connection signal="game_over" from="Tubos" to="HUD" method="_on_tubos_game_over"]
 [connection signal="update_score" from="Tubos" to="HUD" method="_on_tubos_update_score"]
+[connection signal="button_up" from="HUD/CenterContainer/VBoxContainer/Restart Button" to="HUD" method="_on_restart_button_button_up"]
+[connection signal="button_up" from="HUD/CenterContainer/VBoxContainer/Exit Button" to="HUD" method="_on_exit_button_button_up"]
